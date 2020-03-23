@@ -1,7 +1,11 @@
 ---
 - hosts: all
+  gather_facts: no
   tasks:
     - name: Add epel-release repo
       yum:
         name: epel-release
         state: present
+    
+    - fail:  
+        msg: "Random custom error msg"
