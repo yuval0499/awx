@@ -9,4 +9,4 @@
         state: present
     
     - fail:  
-        msg: "Random custom error msg 2" 
+        msg: "Random custom error msg 3" 
