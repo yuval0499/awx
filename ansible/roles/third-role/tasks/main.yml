@@ -1,0 +1,3 @@
+---
+ - fail:
+     msg: "role 3 error"
