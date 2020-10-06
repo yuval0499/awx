@@ -13,7 +13,7 @@
         method: POST
         body:
           '{ "id": {{ group_id }}, "name": "unpatched", "disassociate": "true" }'
-        body_formant: json
+        body_format: json
         headers:
           Content-Type: application/json
         user: "admin"
@@ -28,7 +28,7 @@
         method: POST
         body:
           name: "{{ inventory_hostname }}"
-        body_formant: json
+        body_format: json
         headers:
           Content-Type: application/json
         user: "admin"
