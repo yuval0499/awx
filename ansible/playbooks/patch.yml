@@ -9,7 +9,7 @@
 
     - name: remove from unpatched
       uri:
-        url: 'http://{ tower_url }/api/v2/hosts/{{ inventory_hostname }}++{{ inventory_name }}++{{ organization }}/groups/'
+        url: 'http://{{ tower_url }}/api/v2/hosts/{{ inventory_hostname }}++{{ inventory_name }}++{{ organization }}/groups/'
         method: POST
         body:
           '{ "id": {{ group_id }}, "name": "unpatched", "disassociate": "true" }'
