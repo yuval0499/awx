@@ -5,7 +5,9 @@
   tasks:
     - name: wait 1 min
       wait_for:
-        timeout: 1
+        timeout: 120
+      delegate_to: localhost
+
 
     - name: remove from unpatched
       uri:
