@@ -16,8 +16,7 @@
         body_format: json
         headers:
           Content-Type: application/json
-        user: "admin"
-        password: "123456"
+          Authorization: "Bearer xq2Xk2ENyuSm9o4MgX0dqQ7gg6J4JO"
         validate_certs: no
         status_code: 204
       delegate_to: localhost
@@ -30,9 +29,8 @@
           name: "{{ inventory_hostname }}"
         body_format: json
         headers:
-          Content-Type: application/json
-        user: "admin"
-        password: "123456"
+          Content-Type: application/json       
+          Authorization: "Bearer xq2Xk2ENyuSm9o4MgX0dqQ7gg6J4JO"
         validate_certs: no
         status_code: 204
       delegate_to: localhost     
