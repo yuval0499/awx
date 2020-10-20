@@ -7,7 +7,7 @@
         url: 'http://{{ tower_url }}/api/v2/hosts/{{ inventory_hostname }}++{{ inventory_name }}++{{ organization }}/groups/'
         method: POST
         body:
-          '{ "variables": {bla: "sdf"} }'
+          '{ "variables": {"bla": "sdf"} }'
         body_format: json
         headers:
           Content-Type: application/json
