@@ -1,0 +1,11 @@
+---
+- hosts: all
+  strategy: free
+  gather_facts: no
+  tasks:
+    - name: set hostvars
+      add_host:
+        name: '127.0.0.1'
+        temp_var: 'sdfsd'
+         
+      

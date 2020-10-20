@@ -1,6 +1,0 @@
----
-- hosts: all
-  strategy: free
-  gather_facts: no
-  roles:
-    - first_role 
