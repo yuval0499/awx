@@ -5,7 +5,7 @@
     - name: remove from unpatched
       uri:
         url: 'http://34.125.85.2/api/v2/hosts/2/'
-        method: POST
+        method: PUT
         body:
           '{ "variables": {"bla": "sdf"}, "name": "127.0.0.1" }'
         body_format: json
