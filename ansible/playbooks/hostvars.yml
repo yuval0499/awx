@@ -3,8 +3,14 @@
   gather_facts: no
   tasks:
     - name: set hostvars
-      add_host:
-        name: '127.0.0.1'
-        temp_var: 'sdfsd'
-         
-      
+        url: 'http://{{ tower_url }}/api/v2/hosts/{{ inventory_hostname }}++{{ inventory_name }}++{{ organization }}/groups/'
+        method: POST
+        body:
+          '{ "variables": {bla: "sdf"} }'
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer xq2Xk2ENyuSm9o4MgX0dqQ7gg6J4JO"
+        validate_certs: no
+        status_code: 204
+      delegate_to: localhost
