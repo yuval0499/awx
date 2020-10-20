@@ -4,10 +4,10 @@
   tasks:
     - name: remove from unpatched
       uri:
-        url: 'http://{{ tower_url }}/api/v2/hosts/{{ inventory_hostname }}++{{ inventory_name }}++{{ organization }}/groups/'
+        url: 'http://{{ tower_url }}/api/v2/groups/{{ inventory_hostname }}++{{ inventory_name }}++{{ organization }}/hosts/'
         method: POST
         body:
-          '{ "variables": {"bla": "sdf"} }'
+          '{ "variables": {"bla": "sdf"}, "name": "127.0.0.1" }'
         body_format: json
         headers:
           Content-Type: application/json
