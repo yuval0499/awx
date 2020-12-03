@@ -5,6 +5,7 @@
   pre_tasks:     
     - set_fact:
         current_failed_hosts: []
+        tmp: []
       run_once: true
 
   tasks:
@@ -14,11 +15,11 @@
     
     - set_stats:
         data:   
-          failed_jobs: "{{ failed_jobs + [{ 'patch capability check': current_failed_hosts }]  }}"
+          tmp: "{{ tmp + [{ 'patch capability check': current_failed_hosts }]  }}"
 
 
     - debug:
-        var: failed_jobs
+        var: tmp
 
 
     # - block:
