@@ -1,5 +1,5 @@
 ---
-- hosts: {{ success_hosts_list }}
+- hosts: "{{ success_hosts_list }}"
   strategy: free
   gather_facts: no
   pre_tasks:
