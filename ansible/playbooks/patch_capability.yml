@@ -16,6 +16,9 @@
     - set_fact:
         tmp: "{{ tmp + [{ 'patch capability check': current_failed_hosts }]  }}"
 
+    - set_fact:
+        tmp: "{{ tmp + [{ 'patch capability check2': current_failed_hosts }]  }}"
+
     
     # - set_stats:
     #     data:   
