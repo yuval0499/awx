@@ -11,6 +11,8 @@
     - name: set success job list to keep run on them on the patch
       set_fact:         
         current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
+    
+    - set_fact:         
         failed_jobs: "{{ failed_jobs + [{'patch capability check': current_failed_hosts}]  }}"
 
     - debug:
