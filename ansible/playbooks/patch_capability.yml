@@ -4,7 +4,7 @@
   gather_facts: no
   pre_tasks:
     - set_fact:
-        failed_jobs: "{{ failed_jobs|default([]) + [ {patch capability check : []} ] }}"
+        failed_jobs: "{{ failed_jobs|default([]) + [ {"patch capability check:" []} ] }}"
       run_once: true
 
   tasks:
