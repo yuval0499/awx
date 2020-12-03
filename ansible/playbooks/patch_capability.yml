@@ -12,8 +12,9 @@
       set_fact:         
         current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
     
-    - set_fact:         
-        failed_jobs: "{{ failed_jobs + [{ 'patch capability check': current_failed_hosts }]  }}"
+    - set_stats:
+        data:   
+          failed_jobs: "{{ failed_jobs + [{ 'patch capability check': current_failed_hosts }]  }}"
 
 
     - debug:
