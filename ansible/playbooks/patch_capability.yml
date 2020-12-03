@@ -13,8 +13,8 @@
         current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
     
     - set_fact:         
-        failed_jobs: "{{ failed_jobs +  [{'patch capability check': current_failed_hosts}]  }}"
-        failed_jobs: "{{ failed_jobs +  [{'patch capability tmp2': current_failed_hosts}]  }}"
+        failed_jobs: "{{ [{'patch capability check': current_failed_hosts}]  + failed_jobs +  }}"
+        failed_jobs: "{{ [{'patch capability tmp2': current_failed_hosts}] +  failed_jobs  }}"
 
 
     - debug:
