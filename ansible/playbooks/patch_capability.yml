@@ -1,18 +1,20 @@
 ---
-- hosts: all
+- hosts: {{ success_hosts_list }}
   strategy: free
   gather_facts: no
   pre_tasks:
-    - set_fact:
-        failed_hosts_list: []
+    - set_facts:
+        failed_jobs: "{{ failed_jobs|default([]) + [ {patch capability check : []} ] }}"
       run_once: true
 
   tasks:
-    - block:
-        - fail:  
-      rescue:
-        - name: register host to failed hosts
-          set_stats:
-            data:
-              failed_hosts_list: "{{ [ inventory_hostname ] + failed_hosts_list }}"
+    - debug:
+        msg: "{{ failed_jobs }}"
+    # - block:
+    #     - fail:  
+    #   rescue:
+    #     - name: register host to failed hosts
+    #       set_stats:
+    #         data:
+    #           failed_hosts_list: "{{ [ inventory_hostname ] + 1  }}"
 

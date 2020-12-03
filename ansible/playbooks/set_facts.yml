@@ -1,0 +1,22 @@
+---
+- hosts: all
+  strategy: free
+  gather_facts: no
+  pre_tasks:
+    - set_fact:
+        failed_jobs: []
+        success_hosts_list: []
+      run_once: true
+
+  tasks:
+    - name: set failed jobs object, it will contain all jobs that hosts has failed on them, and the hosts list the failed on each job
+      set_stats:
+        data:
+          failed_jobs: "{{ failed_jobs }}"
+      run_once: true
+
+    - name: set success job list to keep run on them on the patch
+      set_stats:
+        data: 
+          success_hosts_list: "{{ [ inventory_hostname ] + success_hosts_list }}"
+
