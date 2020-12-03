@@ -12,7 +12,7 @@
     - name: set failed jobs object, it will contain all jobs that hosts has failed on them, and the hosts list the failed on each job
       set_stats:
         data:
-          failed_jobs: "{{ failed_jobs }}"
+          failed_jobs: []
       run_once: true
 
     - name: set success job list to keep run on them on the patch
