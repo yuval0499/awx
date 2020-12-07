@@ -12,12 +12,12 @@
     - block:
       - fail:
           msg: custom fail 1 
-        when: "{{ inventory_hostname }}" == "app1-back-prd-1"
+        when: inventory_hostname == "app1-back-prd-1"
       rescue:
       - name: add fail host to list
         set_fact:         
           current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
-    
+
     - set_fact:
         tmp: "{{ tmp + [{ 'patch capability check': current_failed_hosts }]  }}"
     
