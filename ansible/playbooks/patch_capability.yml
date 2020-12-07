@@ -5,7 +5,8 @@
   pre_tasks:     
     - set_fact:
         current_failed_hosts: []
-        tmp: []
+        tmp_failed_jobs: []
+        tmp_success_hosts_list: "{{ success_hosts_list }}"
       run_once: true
 
   tasks:
@@ -17,13 +18,16 @@
       - name: add fail host to list
         set_fact:         
           current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
+          tmp_success_hosts_list: "{{ tmp_success_hosts_list | reject('search', inventory_hostname) | list }}"
+
 
     - set_fact:
-        tmp: "{{ tmp + [{ 'patch capability check': current_failed_hosts }]  }}"
+        tmp_failed_jobs: "{{ tmp_failed_jobs + [{ 'patch capability check': current_failed_hosts }]  }}"
     
     - set_stats:
         data:   
-          failed_jobs: "{{ tmp }}"
+          failed_jobs: "{{ tmp_failed_jobs }}"
+          success_hosts_list: "{{ tmp_success_hosts_list }}"
 
 
 
