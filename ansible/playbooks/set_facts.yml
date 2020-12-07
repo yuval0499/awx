@@ -19,7 +19,7 @@
         success_hosts_list: "{{ [ inventory_hostname ] + success_hosts_list }}"
     
     - name: set success host list to keep running on them during the patch
-        data:
-          success_hosts_list: "{{ success_hosts_list }}"
+      data:
+        success_hosts_list: "{{ success_hosts_list }}"
       run_once: true
 
