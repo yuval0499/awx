@@ -1,9 +1,9 @@
 ---
 - hosts: "{{ success_hosts_list }}"
-  strategy: free
   gather_facts: no
   pre_tasks:     
     - set_fact:
+        job_name: "patch capability check"
         current_failed_hosts: []
         tmp_failed_jobs: []
         tmp_success_hosts_list: "{{ success_hosts_list }}"
@@ -16,20 +16,18 @@
         when: inventory_hostname == "app1-back-prd-1"
       rescue:
       - name: add fail host to list
-        set_fact:         
-          current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
-          tmp_success_hosts_list: "{{ tmp_success_hosts_list | reject('search', inventory_hostname) | list }}"
+        include_role:         
+          name: facts_handler
+          apply:
+            tags:
+             - host_failed
 
-
-    - set_fact:
-        tmp_failed_jobs: "{{ tmp_failed_jobs + [{ 'patch capability check': current_failed_hosts }]  }}"
-    
-    - set_stats:
-        data:   
-          failed_jobs: "{{ tmp_failed_jobs }}"
-          success_hosts_list: "{{ tmp_success_hosts_list }}"
-
-
+    - include_role:
+        name: facts_handler
+        apply:
+          tags:
+            - facts_apply
+      run_once: true
 
 
     # - block:
