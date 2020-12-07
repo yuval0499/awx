@@ -13,10 +13,8 @@
       set_stats:
         data:
           failed_jobs: []
+          success_hosts_list: []
       run_once: true
 
-    - name: set success job list to keep run on them on the patch
-      set_stats:
-        data: 
-          success_hosts_list: "{{ [ inventory_hostname ] + success_hosts_list }}"
+   
 
