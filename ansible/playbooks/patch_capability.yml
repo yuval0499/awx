@@ -18,7 +18,7 @@
       - name: add fail host to list
         set_fact:         
           current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
-          success_hosts_list: "{{ success_hosts_list | reject('search', inventory_hostname) | list }}"
+          tmp_success_hosts_list: "{{ tmp_success_hosts_list | reject('search', inventory_hostname) | list }}"
 
 
     - set_fact:
@@ -27,7 +27,7 @@
     - set_stats:
         data:   
           failed_jobs: "{{ tmp_failed_jobs }}"
-          success_hosts_list: "{{ success_hosts_list }}"
+          success_hosts_list: "{{ tmp_success_hosts_list }}"
 
 
 

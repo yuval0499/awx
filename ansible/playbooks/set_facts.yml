@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  strategy: free
   gather_facts: no
   pre_tasks:
     - set_fact:
@@ -13,11 +12,14 @@
       set_stats:
         data:
           failed_jobs: []
-          success_hosts_list: []
       run_once: true
 
     - name: set success job list to keep run on them on the patch
-      set_stats:
-        data: 
-          success_hosts_list: "{{ [ inventory_hostname ] + success_hosts_list }}"
+      set_fact:
+        success_hosts_list: "{{ [ inventory_hostname ] + success_hosts_list }}"
+    
+    - name: set success host list to keep running on them during the patch
+        data:
+          success_hosts_list: "{{ success_hosts_list }}"
+      run_once: true
 
