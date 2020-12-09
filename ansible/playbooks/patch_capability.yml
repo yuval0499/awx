@@ -24,7 +24,6 @@
 
 
 
----
 - hosts: "{{ success_hosts_list }}"
   strategy: linear
   gather_facts: no
