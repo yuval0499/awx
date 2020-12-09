@@ -11,7 +11,8 @@
 
   tasks:
     - block:
-        - command: /bin/false
+        - debug: 
+            msg: "blaa"
           failed_when: inventory_hostname == "app1-back-prd-1"
       rescue:
         - debug:
