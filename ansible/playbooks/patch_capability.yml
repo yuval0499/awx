@@ -28,8 +28,10 @@
       include_role:
         name: facts_handler
         apply:
-          tags: facts_apply
-      tags: always
+          tags: 
+            - facts_apply
+      tags: 
+        - always
       run_once: true
 
 
