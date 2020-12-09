@@ -11,16 +11,17 @@
 
   tasks:
     - block:
-        - fail:
-            msg: custom fail 1 
-          when: inventory_hostname == "app1-back-prd-1"
+        - command: /bin/false
+          failed_when: inventory_hostname == "app1-back-prd-1"
       rescue:
-        - name: add fail host to list
-          include_role:         
-            name: facts_handler
-            apply:
-              tags:
-               - host_failed
+        - debug:
+            msg: "Failed !!"
+        # - name: add fail host to list
+        #   include_role:         
+        #     name: facts_handler
+        #     apply:
+        #       tags:
+        #        - host_failed
 
     - name: job finished facts applier
       include_role:
