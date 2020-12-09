@@ -17,13 +17,13 @@
       rescue:
       - name: add fail host to list
         include_role:         
-          name: facts_handler
+          name: capability failed handler
           apply:
             tags:
              - host_failed
 
     - include_role:
-        name: facts_handler
+        name: facts set
         apply:
           tags:
             - facts_apply
