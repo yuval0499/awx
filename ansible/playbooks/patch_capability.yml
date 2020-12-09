@@ -22,7 +22,8 @@
             tags:
              - host_failed
 
-    - include_role:
+    - name: job finished facts applier
+      include_role:
         name: facts_handler
         apply:
           tags:
