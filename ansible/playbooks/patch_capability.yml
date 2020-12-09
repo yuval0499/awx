@@ -20,20 +20,16 @@
             msg: "Failed !!"
         - name: add fail host to list
           include_role:         
-            name: patch_facts_handler/failed_host
-            
+            name: patch_facts_handler/failed_host  
 
+
+
+---
+- hosts: "{{ success_hosts_list }}"
+  gather_facts: no
+  tasks:
     - name: job finished facts applier
       include_role:
         name: patch_facts_handler/facts_apply  
       run_once: true
-
-
-    # - block:
-    #     - fail:  
-    #   rescue:
-    #     - name: register host to failed hosts
-    #       set_stats:
-    #         data:
-    #           failed_hosts_list: "{{ [ inventory_hostname ] + 1  }}"
 
