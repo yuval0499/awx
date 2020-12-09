@@ -17,16 +17,14 @@
       rescue:
         - debug:
             msg: "Failed !!"
-        # - name: add fail host to list
-        #   include_role:         
-        #     name: facts_handler
-        #     apply:
-        #       tags:
-        #        - host_failed
+        - name: add fail host to list
+          include_role:         
+            name: patch_facts_handler/failed_host
+            
 
     - name: job finished facts applier
       include_role:
-        name: patch_facts_handler/failed_host  
+        name: patch_facts_handler/facts_apply  
       run_once: true
 
 
