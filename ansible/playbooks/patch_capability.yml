@@ -5,6 +5,7 @@
   pre_tasks:     
     - set_fact:
         job_name: "patch capability check"
+        current_failed_hosts: []
         tmp_failed_jobs: []
         tmp_success_hosts_list: "{{ success_hosts_list }}"
       run_once: true
