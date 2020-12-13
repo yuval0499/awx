@@ -1,6 +1,7 @@
 ---
 - hosts: "{{ success_hosts_list }}"
   gather_facts: no
+  strategy: free
   pre_tasks:     
     - set_fact:
         job_name: "patch capability check"
