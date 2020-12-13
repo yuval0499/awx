@@ -1,4 +1,7 @@
 ---
+ - debug:
+     msg: "{{ current_failed_hosts }}"
+     
  - name: set host fact in case host failed one of patch steps 
    set_fact:         
     current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
