@@ -1,7 +1,7 @@
 ---
 - hosts: "{{ success_hosts_list }}"
   gather_facts: no
-  strategy: free        
+  strategy: free      
   pre_tasks:     
     - set_fact:
         job_name: "patch capability check"
@@ -22,9 +22,9 @@
           include_role:         
             name: patch_facts_handler/failed_host  
 
-        - name: job finished facts applier
-          include_role:
-            name: patch_facts_handler/facts_apply  
-          run_once: true
+        # - name: job finished facts applier
+        #   include_role:
+        #     name: patch_facts_handler/facts_apply  
+        #   run_once: true
           
 

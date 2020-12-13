@@ -1,9 +1,13 @@
+# ---
+#  - debug:
+#      msg: "{{ current_failed_hosts }}"
+
+#  - name: set host fact in case host failed one of patch steps 
+#    set_fact:         
+#     current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
+#     tmp_success_hosts_list: "{{ tmp_success_hosts_list | reject('search', inventory_hostname) | list }}"
+
 ---
- - debug:
-     msg: "{{ current_failed_hosts }}"
-     
- - name: set host fact in case host failed one of patch steps 
-   set_fact:         
-    current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
-    tmp_success_hosts_list: "{{ tmp_success_hosts_list | reject('search', inventory_hostname) | list }}"
- 
+ - set_stats:
+     data:
+        success_hosts_list: "{{ success_hosts_list | reject('search', inventory_hostname) | list }}"
