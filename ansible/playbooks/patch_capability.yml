@@ -22,6 +22,7 @@
         data:
           current_failed_hosts: "{{ current_failed_hosts }}"
           failed_jobs: "{{ current_failed_hosts + [{ 'patch capability check': current_failed_hosts }]  }}"
+        aggregate: no
 
         # - name: job finished facts applier
         #   include_role:
