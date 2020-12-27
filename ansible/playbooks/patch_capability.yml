@@ -7,7 +7,7 @@
         job_name: "patch capability check"
         current_failed_hosts: []
         tmp_failed_jobs: []
-        tmp_success_hosts_list: "{{ success_hosts_list }}"
+        play_hosts_list: []
       run_once: true
 
   tasks:
@@ -16,11 +16,13 @@
             msg: "blaa"
           failed_when: inventory_hostname != "app1-back-prd-1"
       rescue:
-        - debug:
-            msg: "Failed !!"
         - name: add fail host to list
           include_role:         
             name: patch_facts_handler/failed_host  
+
+    # - set_stats:
+    #     data:
+    #       success_hosts_list: "{{ [inventory_hostname] + play_hosts_list }}"
 
         # - name: job finished facts applier
         #   include_role:
