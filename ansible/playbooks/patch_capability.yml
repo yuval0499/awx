@@ -5,9 +5,7 @@
   pre_tasks:     
     - set_fact:
         job_name: "patch capability check"
-        current_failed_hosts: []
-        tmp_failed_jobs: []
-        play_hosts_list: []
+        current_failed_hosts: []        
       run_once: true
 
   tasks:
@@ -20,9 +18,9 @@
           include_role:         
             name: patch_facts_handler/failed_host  
 
-    # - set_stats:
-    #     data:
-    #       success_hosts_list: "{{ [inventory_hostname] + play_hosts_list }}"
+    - set_stats:
+        data:
+          current_failed_hosts: "{{ current_failed_hosts }}"
 
         # - name: job finished facts applier
         #   include_role:
