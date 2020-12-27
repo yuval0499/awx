@@ -11,3 +11,4 @@
  - set_stats:
      data:
         success_hosts_list: "{{ success_hosts_list | reject('search', inventory_hostname) | list }}"
+     aggregate: no 
