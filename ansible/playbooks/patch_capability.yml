@@ -5,7 +5,8 @@
   pre_tasks:     
     - set_fact:
         job_name: "patch capability check"
-        current_failed_hosts: []        
+        current_failed_hosts: []
+        current_success_hosts_list: "{{ success_hosts_list }}"        
       run_once: true
 
   tasks:
@@ -20,7 +21,7 @@
 
     - set_stats:
         data:
-          current_failed_hosts: "{{ current_failed_hosts }}"
+          success_hosts_list: "{{ current_success_hosts_list }}"
           failed_jobs: "{{ failed_jobs + [{ 'patch capability check': current_failed_hosts }]  }}"
         aggregate: no
 
