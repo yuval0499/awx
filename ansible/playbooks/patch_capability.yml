@@ -4,16 +4,15 @@
   strategy: free      
   pre_tasks:     
     - set_fact:
-        job_name: "patch capability check"
+        job_name: "{{ patch_role }}"
         current_failed_hosts: []
         current_success_hosts_list: "{{ success_hosts_list }}"        
       run_once: true
 
   tasks:
     - block:
-        - debug: 
-            msg: "blaa"
-          failed_when: inventory_hostname != "localhost"
+        - include_role: 
+            name: "{{ patch_role }}"
       rescue:
         - name: add fail host to list
           include_role:         
@@ -23,10 +22,5 @@
       include_role:         
         name: patch_facts_handler/facts_apply
 
-
-        # - name: job finished facts applier
-        #   include_role:
-        #     name: patch_facts_handler/facts_apply  
-        #   run_once: true
           
 
