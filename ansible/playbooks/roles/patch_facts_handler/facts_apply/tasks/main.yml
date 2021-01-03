@@ -1,10 +1,6 @@
 ---
- - block: 
-    - set_fact:
-        tmp_failed_jobs: "{{ [{ 'patch capability check': current_failed_hosts }]  }}"
-    
-    - name: set total hosts facts
-      set_stats:
-        data:   
-          failed_jobs: "{{ tmp_failed_jobs }}"
-          success_hosts_list: "{{ tmp_success_hosts_list }}"
+ - set_stats:
+     data:
+       success_hosts_list: "{{ current_success_hosts_list }}"
+       failed_jobs: "{{ failed_jobs + [{ 'patch capability check': current_failed_hosts }]  }}"
+     aggregate: no

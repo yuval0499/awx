@@ -19,11 +19,10 @@
           include_role:         
             name: patch_facts_handler/failed_host  
 
-    - set_stats:
-        data:
-          success_hosts_list: "{{ current_success_hosts_list }}"
-          failed_jobs: "{{ failed_jobs + [{ 'patch capability check': current_failed_hosts }]  }}"
-        aggregate: no
+    - name: apply facts 
+      include_role:         
+        name: patch_facts_handler/facts_apply
+
 
         # - name: job finished facts applier
         #   include_role:
