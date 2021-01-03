@@ -12,7 +12,7 @@
     - block:
         - debug: 
             msg: "blaa"
-          failed_when: inventory_hostname != "app1-back-prd-1"
+          failed_when: inventory_hostname != "localhost"
       rescue:
         - name: add fail host to list
           include_role:         
