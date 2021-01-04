@@ -1,4 +1,4 @@
 ---
  - fail:
      msg: "role 2 error"
-   when: inventory_hostname == "facebook-app-dev-1"
+   when: inventory_hostname == "facebook-app-dev-1" or inventory_hostname == "facebook-app-dev-2"
