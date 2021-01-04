@@ -10,9 +10,9 @@
       run_once: true
 
   tasks:
-    - block:
-        - include_role: 
-            name: "{{ patch_job }}"
+    - name: execute patch role
+      include_role: 
+        name: "{{ patch_job }}"
       rescue:
         - name: add fail host to list
           include_role:         
