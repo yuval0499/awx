@@ -4,7 +4,7 @@
   strategy: free      
   pre_tasks:     
     - set_fact:
-        job_name: "{{ patch_role }}"
+        job_name: "{{ patch_job }}"
         current_failed_hosts: []
         current_success_hosts_list: "{{ success_hosts_list }}"        
       run_once: true
@@ -12,7 +12,7 @@
   tasks:
     - block:
         - include_role: 
-            name: "{{ patch_role }}"
+            name: "{{ patch_job }}"
       rescue:
         - name: add fail host to list
           include_role:         
