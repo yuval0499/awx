@@ -1,4 +1,10 @@
 ---
+ - debug:
+     msg: "{{ hostvars['localhost'] }}"
+ 
+ - debug:
+     msg: "{{ hostvars['localhost']['current_success_hosts_list'] }}"
+
  - set_stats:
      data:
        success_hosts_list: "{{ hostvars['localhost']['current_success_hosts_list'] }}"
