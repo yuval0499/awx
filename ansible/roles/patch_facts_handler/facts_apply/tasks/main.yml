@@ -2,7 +2,7 @@
  - debug:
      var: hostvars['localhost']
  
-  - debug:
+ - debug:
      var: hostvars['localhost']["ansible_check_mode"]
 
  - debug:
