@@ -3,10 +3,10 @@
      var: hostvars['localhost']
  
  - debug:
-     var: hostvars['localhost']["ansible_check_mode"]
+     var: hostvars['localhost'].ansible_check_mode
 
  - debug:
-     var: hostvars['localhost']["current_success_hosts_list"]
+     var: hostvars['localhost'].current_success_hosts_list
 
  - set_stats:
      data:
