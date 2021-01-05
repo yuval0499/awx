@@ -6,7 +6,8 @@
     - set_fact:
         job_name: "{{ patch_job }}"
         current_failed_hosts: []
-        current_success_hosts_list: "{{ success_hosts_list }}"    
+        current_success_hosts_list: "{{ success_hosts_list }}"  
+      delegate_to: localhost  
       
   tasks:
     - block:
