@@ -2,11 +2,11 @@
  - set_stats:
      data:
        success_hosts_list: "{{ success_hosts_list | reject('search', inventory_hostname) | list }}"
-     aggregate: no
+     aggregate: yes
  
  - debug:
       msg: "{{ success_hosts_list }}"
-      
+
  - set_stats:
      data:
        failed_jobs: "{{ failed_jobs + [{ patch_job: ansible_play_hosts_all | difference(success_hosts_list) |join('\n') }]  }}"
