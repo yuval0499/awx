@@ -1,7 +1,5 @@
 ---
  - set_fact:
-    current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
+    current_failed_hosts: "{{ ansible_play_hosts_all| difference(ansible_play_batch) |join('\n') }}"
     current_success_hosts_list: "{{ success_hosts_list | reject('search', inventory_hostname) | list }}"
-   delegate_to: "{{ item }}"
-   delegate_facts: True
-   with_items: "{{ play_hosts }}"
+  
