@@ -1,9 +1,9 @@
 ---
  - debug:
-     msg: "{{ hostvars['localhost'] }}"
+     var: hostvars['localhost']
  
  - debug:
-     msg: "{{ hostvars['localhost']['current_success_hosts_list'] }}"
+     var: hostvars['localhost']['current_success_hosts_list']
 
  - set_stats:
      data:
