@@ -7,9 +7,7 @@
         job_name: "{{ patch_job }}"
         current_failed_hosts: []
         current_success_hosts_list: "{{ success_hosts_list }}"    
-      delegate_to: localhost        
-      run_once: true
-
+      
   tasks:
     - block:
         - include_role: 
