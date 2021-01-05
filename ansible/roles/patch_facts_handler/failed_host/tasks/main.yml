@@ -1,6 +1,6 @@
 ---
  - debug:
-     var: hostvars['localhost']['current_success_hosts_list']
+     var: hostvars['localhost']['current_failed_hosts']
 
  - set_fact:
     current_failed_hosts: "{{  [ inventory_hostname ] + hostvars['localhost']['current_failed_hosts'] }}"
