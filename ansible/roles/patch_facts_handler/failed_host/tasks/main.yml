@@ -1,6 +1,15 @@
 --- 
+ - debug:
+     var: hostvars['localhost']
+ 
+ - debug:
+     var: hostvars['localhost'].ansible_check_mode
+
+ - debug:
+     var: hostvars['localhost'].current_success_hosts_list
+     
  - set_fact:
     current_failed_hosts: "{{  [ inventory_hostname ] + hostvars['localhost']['current_failed_hosts'] }}"
-    current_success_hosts_list: "{{ hostvars['localhost']['success_hosts_list'] | reject('search', inventory_hostname) | list }}"
+    current_success_hosts_list: "{{ success_hosts_list | reject('search', inventory_hostname) | list }}"
    delegate_to: localhost
    delegate_facts: true
