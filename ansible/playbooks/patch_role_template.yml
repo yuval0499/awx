@@ -15,8 +15,8 @@
             name: "{{ patch_job }}"
       rescue:
         - name: add fail host to list
-          import_tasks:         
-            name: patch_facts_handler/failed_host/tasks/main.yml
+          import_tasks: failedhost.yml
+            
           
 
 #     - name: apply facts 

@@ -1,0 +1,16 @@
+---
+ - debug:
+     msg: "{{ failed_jobs }}"
+   delegate_to: localhost
+
+ - set_fact:
+    current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
+    current_success_hosts_list: "{{ current_success_hosts_list | reject('search', inventory_hostname) | list }}"
+   delegate_to: localhost
+
+ - set_stats:
+     data:
+       success_hosts_list: "{{ current_success_hosts_list }}"
+       failed_jobs: "{{ failed_jobs + [{ patch_job: current_failed_hosts }]  }}"
+     aggregate: no
+   delegate_to: localhost 
