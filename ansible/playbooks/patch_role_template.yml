@@ -4,6 +4,10 @@
   strategy: free
   # serial: 1 
   pre_tasks:     
+    - file:
+        state: absent
+        path: "/tmp/failedHosts"
+        
     - set_fact:
         job_name: "{{ patch_job }}"
         current_failed_hosts: []
