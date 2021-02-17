@@ -1,8 +1,8 @@
 ---
 - hosts: "{{ success_hosts_list }}"
   gather_facts: no
-  # strategy: free
-  serial: 1 
+  strategy: free
+  # serial: 1 
   pre_tasks:     
     - set_fact:
         job_name: "{{ patch_job }}"
