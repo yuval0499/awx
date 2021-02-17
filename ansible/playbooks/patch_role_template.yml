@@ -6,6 +6,7 @@
   pre_tasks:     
     - file:
         state: touch
+        force: yes
         path: "/tmp/failedHosts.txt"
       delegate_to: 127.0.0.1
 
