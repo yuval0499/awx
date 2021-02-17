@@ -1,12 +1,12 @@
-#  - lineinfile:
-#      path: /tmp/failedHosts.txt
-#      line: "{{ inventory_hostname }}"
-#    delegate_to: localhost
+ - lineinfile:
+     create: yes
+     path: /tmp/failedHosts.txt
+     line: "{{ inventory_hostname }}"
+   delegate_to: localhost
 #  - debug:
 #      msg: "{{ hostvars['localhost']['current_failed_hosts'] }}"
 #    delegate_to: localhost
- - debug:
-     msg: "B"
+
 #  - set_fact:
 #     current_failed_hosts: "{{  [ inventory_hostname ] + hostvars['localhost']['current_failed_hosts'] }}"
 #     current_success_hosts_list: "{{ hostvars['localhost']['current_success_hosts_list'] | reject('search', inventory_hostname) | list }}"

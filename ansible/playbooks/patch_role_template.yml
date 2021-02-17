@@ -4,8 +4,11 @@
   strategy: free
   # serial: 1 
   pre_tasks:     
-    - copy: path=/tmp/failedHosts.txt content='' force=yes
-      delegate_to: localhost
+    - file:
+        state: absent
+        force: yes
+        path: "/tmp/failedHosts.txt"
+      delegate_to: 127.0.0.1
 
     - set_fact:
         curr_failed_hosts: []
