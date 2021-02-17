@@ -16,7 +16,8 @@
       rescue:
         - name: add fail host to list
           include_role:         
-            name: patch_facts_handler/failed_host  
+            name: patch_facts_handler/failed_host
+          delegate_to: localhost
 
 #     - name: apply facts 
 #       include_role:         
