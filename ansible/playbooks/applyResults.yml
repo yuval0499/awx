@@ -1,9 +1,14 @@
 ---
-- set_fact:
-    curr_failed_hosts: "{{ curr_failed_hosts + item }}"
+# - set_fact:
+#     curr_failed_hosts: "{{ curr_failed_hosts + item }}"
+#   loop: "{{ lookup('file', '/tmp/failedHosts').splitlines() }}"
+#   delegate_to: localhost
+
+- debug:
+    msg: "{{ item }}"
   loop: "{{ lookup('file', '/tmp/failedHosts').splitlines() }}"
   delegate_to: localhost
- 
+
 - debug:
     msg: "{{ curr_failed_hosts }}"
   delegate_to: localhost
