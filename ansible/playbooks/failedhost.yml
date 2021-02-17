@@ -1,5 +1,5 @@
  - lineinfile:
-     path: /tmp/failedHosts
+     path: /tmp/failedHosts.txt
      line: "{{ [ inventory_hostname ] }}"
    delegate_to: localhost
 #  - debug:
