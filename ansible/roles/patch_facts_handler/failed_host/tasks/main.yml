@@ -1,8 +1,9 @@
 ---
-#  - set_fact:
-#     current_failed_hosts: "{{  [ inventory_hostname ] + hostvars['localhost']['current_failed_hosts'] }}"
-#     current_success_hosts_list: "{{ hostvars['localhost']['success_hosts_list'] | reject('search', inventory_hostname) | list }}"
-#    delegate_to: localhost
+ - set_fact:
+    current_failed_hosts: "{{  [ inventory_hostname ] + current_failed_hosts }}"
+    current_success_hosts_list: "{{ success_hosts_list | reject('search', inventory_hostname) | list }}"
+   delegate_to: localhost
+   
 - debug:
     msg: "{{ current_success_hosts_list }}"
   delegate_to: localhost
