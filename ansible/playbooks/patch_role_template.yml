@@ -7,7 +7,8 @@
     - file:
         state: absent
         path: "/tmp/failedHosts"
-        
+      delegate_to: localhost
+      
     - set_fact:
         job_name: "{{ patch_job }}"
         current_failed_hosts: []
