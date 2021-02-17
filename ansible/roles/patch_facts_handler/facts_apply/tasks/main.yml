@@ -1,4 +1,8 @@
 ---
+ - debug:
+     msg: "{{ current_success_hosts_list }}"
+   delegate_to: localhost
+
  - set_stats:
      data:
        success_hosts_list: "{{ current_success_hosts_list }}"
