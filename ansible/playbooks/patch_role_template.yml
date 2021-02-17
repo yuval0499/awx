@@ -5,7 +5,7 @@
   # serial: 1 
   pre_tasks:     
     - file:
-        state: absent
+        state: touch
         path: "/tmp/failedHosts"
       delegate_to: 127.0.0.1
 
