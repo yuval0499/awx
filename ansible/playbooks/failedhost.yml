@@ -1,6 +1,6 @@
  - lineinfile:
      path: /tmp/failedHosts.txt
-     line: "{{ [ inventory_hostname ] }}"
+     line: "{{ inventory_hostname }}"
    delegate_to: localhost
 #  - debug:
 #      msg: "{{ hostvars['localhost']['current_failed_hosts'] }}"
