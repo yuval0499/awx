@@ -1,15 +1,17 @@
 ---
 - shell: cat /tmp/failedHosts.txt
   delegate_to: localhost
-  
-- set_fact:
-    curr_failed_hosts: "{{ curr_failed_hosts + item|default([]) }}"
+
+# - set_fact:
+#     curr_failed_hosts: "{{ curr_failed_hosts + item|default([]) }}"
+#   loop: "{{ lookup('file', '/tmp/failedHosts.txt').splitlines() }}"
+#   delegate_to: localhost
+
+- debug:
+    msg: "{{ item }}"
   loop: "{{ lookup('file', '/tmp/failedHosts.txt').splitlines() }}"
   delegate_to: localhost
 
-- debug:
-    msg: "{{ curr_failed_hosts }}"
-  delegate_to: localhost
 
 
 #  - set_stats:
