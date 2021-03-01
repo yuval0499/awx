@@ -2,8 +2,8 @@
 - shell: cat /tmp/failedHosts.txt
   delegate_to: localhost
 
-- debug: msg="{{item}}"
-  with_lines: cat /tmp/failedHosts.txt
+- set_fact:
+    curr_failed_hosts: "{{ curr_failed_hosts + item }}"
   delegate_to: localhost
 
 
