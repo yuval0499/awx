@@ -11,6 +11,6 @@
 - set_stats:
     data:
       success_hosts_list: "{{ current_success_hosts_list }}"
-      failed_jobs: "{{ failed_jobs + [{ patch_job: current_failed_hosts }]  }}"
+      failed_jobs: "{{ failed_jobs + [{ patch_job: curr_failed_hosts }]  }}"
     aggregate: no
   delegate_to: localhost 
