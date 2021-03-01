@@ -9,10 +9,10 @@
 - debug:
     msg: "{{ file_lines }}"
 
-# - set_fact:
-#     curr_failed_hosts: curr_failed_hosts + item
-#   with_lines: cat /tmp/failedHosts.txt
-#   delegate_to: localhost
+- set_fact:
+    curr_failed_hosts: "{{ curr_failed_hosts + item }}"
+  with_items: file_lines
+  delegate_to: localhost
 
 
 # - set_fact:
