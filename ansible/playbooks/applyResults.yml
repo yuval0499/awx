@@ -4,9 +4,6 @@
     file_lines: "{{ lookup('file', '/tmp/failedHosts.txt').splitlines() }}"
   delegate_to: localhost
 
-- debug:
-    msg: "{{ file_lines }}"
-
 - set_fact:
     curr_failed_hosts: "{{ curr_failed_hosts + [ item ] }}"
   with_items: file_lines
@@ -14,7 +11,7 @@
 
 - debug:
     var: curr_failed_hosts
-    
+
 # - set_fact:
 #     curr_failed_hosts: !unsafe "{{ curr_failed_hosts + [ item ] }}"
 #   loop: "{{ lookup('file', '/tmp/failedHosts.txt').splitlines() }}"
