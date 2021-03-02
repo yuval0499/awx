@@ -5,7 +5,8 @@
   loop: "{{ lookup('file', '/tmp/failedHosts.txt').splitlines() }}"
   delegate_to: localhost
 
-
+- debug:
+    msg: "{{ curr_failed_hosts }}"
 - set_stats:
     data:
       success_hosts_list: "{{ current_success_hosts_list }}"
