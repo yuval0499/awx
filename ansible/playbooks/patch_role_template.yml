@@ -24,7 +24,6 @@
         - name: add fail host to list
           import_tasks: failedhost.yml
             
----
 - hosts: "{{ success_hosts_list }}"
   gather_facts: no
   tasks:     
