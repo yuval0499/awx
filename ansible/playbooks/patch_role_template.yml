@@ -13,6 +13,7 @@
     - set_fact:
         job_name: "{{ patch_job }}"
         current_failed_hosts: []
+        current_success_hosts_list: "{{ success_hosts_list }}"  
       delegate_to: localhost  
       
   tasks:
@@ -23,20 +24,9 @@
         - name: add fail host to list
           import_tasks: failedhost.yml
             
-          
-
-#     - name: apply facts 
-#       include_role:         
-#         name: patch_facts_handler/facts_apply
-#       run_once: true
-# ---
+---
 - hosts: "{{ success_hosts_list }}"
   gather_facts: no
   tasks:     
     - name: apply facts 
       import_tasks: applyResults.yml
-
-
-
-          
-
