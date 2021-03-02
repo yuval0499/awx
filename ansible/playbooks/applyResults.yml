@@ -1,15 +1,12 @@
 ---
 - set_fact:
-    curr_failed_hosts: "{{ curr_failed_hosts + [ item ] }}"
+    current_failed_hosts: "{{ current_failed_hosts + [ item ] }}"
   loop: "{{ lookup('file', '/tmp/failedHosts.txt').splitlines() }}"
   delegate_to: localhost
 
-- debug:
-    msg: "{{ curr_failed_hosts }}"
-
 - set_stats:
     data:
-      success_hosts_list: "{{ current_success_hosts_list | difference(curr_failed_hosts) }}"
-      failed_jobs: "{{ failed_jobs + [{ patch_job: curr_failed_hosts }]  }}"
+      success_hosts_list: "{{ current_success_hosts_list | difference(current_failed_hosts) }}"
+      failed_jobs: "{{ failed_jobs + [{ patch_job: current_failed_hosts }]  }}"
     aggregate: no
   delegate_to: localhost 
